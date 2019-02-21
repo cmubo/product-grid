@@ -1,0 +1,43 @@
+.colour-configurator{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: $black;
+  //width: 300px;
+
+  .config-container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    .config-row{
+      width: 100%;
+      color: $green;
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      font-size: 0.75rem;
+      align-items: center;
+      label{
+        flex-grow: 1;
+        text-align: right;
+        padding: 0px 15px;
+      }
+      input{
+        width: 100px;
+        background: #fff;
+        color: $black;
+        appearance: none;
+        box-shadow: 0;
+        border: 0;
+        padding: 3px 5px;
+        box-sizing: border-box;
+
+        &:focus, &:active{
+          outline: 1px solid $green;
+        }
+      }
+    }
+  }
+
+}

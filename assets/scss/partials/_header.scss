@@ -1,0 +1,38 @@
+header{
+  background: $black;
+
+  .header-inner-container{
+    display: flex;
+    justify-content: space-between;
+    align-item: center;
+    align-content: center;
+  }
+  a{
+    padding: 20px;
+    font-size: 0.9125rem;
+    text-decoration: none;
+  }
+  nav{
+    ul{
+      display: flex;
+
+      li{
+
+        a{
+          color: #fff;
+          display: block;
+        }
+      }
+    }
+  }
+
+  .config-controls{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    a{
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

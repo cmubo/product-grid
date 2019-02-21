@@ -1,0 +1,12 @@
+// SCSS Imports
+@import '/partials/normalize';
+@import '/partials/variables';
+
+@import '/partials/globals';
+@import '/partials/header';
+@import '/partials/productsgrid';
+@import '/partials/gridlayout';
+@import '/partials/configurator';
+
+// Nothing should be placed after overrides
+@import 'partials/overrides';
