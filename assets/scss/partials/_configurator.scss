@@ -1,9 +1,11 @@
 .colour-configurator{
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   background: $black;
-  //width: 300px;
+  width: 300px;
+  transition: .2s;
+  height: 100%;
 
   .config-container{
     display: flex;
