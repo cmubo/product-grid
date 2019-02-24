@@ -1,10 +1,11 @@
 <template>
-  <section class="site-container">
+  <section class="site-container split-config">
 
-    <div class="colour-configurator">
+    <div class="product-configurator">
       <div class="config-container">
+        <h3>Product</h3>
         <div class="config-row">
-            <label>Product Background</label>
+            <label>Product BG</label>
             <input v-model="colours.productBackground" placeholder="#ffffff"></input>
         </div>
         <div class="config-row">
@@ -18,7 +19,7 @@
       </div>
     </div>
 		<!-- TODO: Create a list view class which changes layout of products to full width -->
-		<div class="cm-products cm-grid-view cm-style-1">
+		<div class="cm-products cm-grid-view cm-style-1 four-col">
 			<div class="cm-product-cell" v-for="item in productsList">
 				<div class="cm-product-inner" :style="{backgroundColor: colours.productBackground}">
 					<!-- TODO: Out of stock -->

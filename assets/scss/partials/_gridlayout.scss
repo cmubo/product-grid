@@ -1,21 +1,29 @@
 //Grid layout
 
 .cm-grid-view{
-  .cm-product-cell{
-    width: 25%;
+  &.four-col{
+    .cm-product-cell{
+      width: 25%;
+    }
   }
+
+  &.five-col{
+    .cm-product-cell{
+      width: 20%;
+    }
+  }
+
 
   &.cm-style-1{
     .cm-product-cell{
-      padding-left: 30px;
-      padding-bottom: 30px;
+      padding: 15px;
       display: flex;
 
       .cm-product-inner{
         position: relative;
         padding: 10px;
         width: 100%;
-        background: #fff;
+        background: $white;
         display: flex;
         flex-direction: column;
         padding-bottom: 70px;
@@ -75,7 +83,7 @@
 
           > a {
             background: red; // TODO: Make changable
-            color: #fff; // TODO: Make changable
+            color: $white; // TODO: Make changable
             font-size: $linkFontSize;
             font-weight: bold;
             text-decoration: none;

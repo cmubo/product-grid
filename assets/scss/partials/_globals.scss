@@ -1,7 +1,14 @@
 body {
 	background: $background;
 	font-family: $baseFont;
-	.cm-products, .cm-products *, header, footer, nav {
+
+	#__layout > div {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.cm-products, .cm-products *, header, footer, nav, div {
 		box-sizing: border-box;
 	}
 
@@ -19,7 +26,36 @@ body {
 		width: 100%;
 		box-sizing: border-box;
 		position: relative;
+		height: 100%;
 	}
+
+	.split-config{
+	  display: flex;
+	  justify-content: flex-end;
+
+	  .cm-products{
+	    display: flex;
+	    flex-wrap: wrap;
+	    width: calc(100% - 300px);
+	    padding-left: 5%;
+	    padding-right: 5%;
+	    padding-top: 50px;
+	    transition: .2s;
+	  }
+
+	  &.hide-config{
+
+	    .cm-products{
+	      width: 100%;
+	    }
+
+	    .product-configurator{
+	      transform: translateX(-100%);
+	    }
+	  }
+	}
+
+
 }
 
 
