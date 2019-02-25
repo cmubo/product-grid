@@ -1,37 +1,36 @@
 //Grid layout
 
-.cm-grid-view{
-  &.three-col{
-    .cm-product-cell{
+.cm-grid-view {
+  &.three-col {
+    .cm-product-cell {
       width: 33.33%;
     }
   }
 
-  &.four-col{
-    .cm-product-cell{
+  &.four-col {
+    .cm-product-cell {
       width: 25%;
     }
   }
 
-  &.five-col{
-    .cm-product-cell{
+  &.five-col {
+    .cm-product-cell {
       width: 20%;
     }
   }
 
-  &.six-col{
-    .cm-product-cell{
+  &.six-col {
+    .cm-product-cell {
       width: 16.6666666667%;
     }
   }
 
-
-  &.cm-style-1{
-    .cm-product-cell{
+  &.cm-style-1 {
+    .cm-product-cell {
       padding: 15px;
       display: flex;
 
-      .cm-product-inner{
+      .cm-product-inner {
         position: relative;
         padding: 10px;
         width: 100%;
@@ -39,9 +38,9 @@
         display: flex;
         flex-direction: column;
         padding-bottom: 70px;
-        transition: .3s;
+        transition: 0.3s;
 
-        .cm-product-img{
+        .cm-product-img {
           position: relative;
           width: 100%;
           padding: 50%;
@@ -56,34 +55,33 @@
             height: 100%;
             top: 0;
             left: 0;
-
           }
 
-          img{
+          img {
             width: 0;
             height: 0;
           }
         }
 
-        .cm-product-title{
+        .cm-product-title {
           text-align: center;
           color: $black;
           font-size: $titleFontSize;
           padding-bottom: 15px;
 
-          a{
+          a {
             color: $black;
             text-decoration: none;
           }
         }
 
-        .cm-product-price{
+        .cm-product-price {
           flex-grow: 1;
           text-align: center;
           font-weight: bold;
         }
 
-        .cm-links{
+        .cm-links {
           position: absolute;
           width: 100%;
           bottom: 0;
@@ -91,7 +89,7 @@
           display: flex;
           opacity: 0;
           visibility: hidden;
-          transition: .3s;
+          transition: 0.3s;
 
           > a {
             background: red; // TODO: Make changable
@@ -105,24 +103,23 @@
             padding: 5px;
             text-align: center;
 
-            &.cm-cart-link{
+            &.cm-cart-link {
               background: blue;
             }
           }
         }
       }
 
-      &:hover{
-        .cm-product-inner{
+      &:hover {
+        .cm-product-inner {
           box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
-          .cm-links{
+          .cm-links {
             visibility: visible;
             opacity: 1;
           }
         }
       }
-
     }
   }
 }
