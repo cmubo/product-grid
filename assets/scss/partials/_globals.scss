@@ -3,7 +3,8 @@ body {
 	font-family: $baseFont;
 
 	#__layout > div {
-		height: 100vh;
+		min-height: 100vh;
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 	}
@@ -27,25 +28,30 @@ body {
 		box-sizing: border-box;
 		position: relative;
 		height: 100%;
+		flex-grow: 1;
 	}
 
 	.split-config{
 	  display: flex;
 	  justify-content: flex-end;
 
+		.cm-products-container{
+			width: calc(100% - 300px);
+			padding-left: 5%;
+			padding-right: 5%;
+			padding-top: 50px;
+			transition: .2s;
+		}
+
 	  .cm-products{
 	    display: flex;
 	    flex-wrap: wrap;
-	    width: calc(100% - 300px);
-	    padding-left: 5%;
-	    padding-right: 5%;
-	    padding-top: 50px;
-	    transition: .2s;
+			align-items: flex-start;
 	  }
 
 	  &.hide-config{
 
-	    .cm-products{
+	    .cm-products-container{
 	      width: 100%;
 	    }
 

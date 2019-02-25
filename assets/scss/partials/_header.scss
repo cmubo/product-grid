@@ -6,6 +6,16 @@ header{
     padding: 20px;
     font-size: 0.9125rem;
     text-decoration: none;
+    width: 100px;
+    transition: .2s;
+    box-sizing: border-box;
+    text-align: center;
+
+
+    &:hover{
+      background: $black;
+      color: $white;
+    }
   }
 
   .header-inner-container{
@@ -33,6 +43,17 @@ header{
     flex-grow: 1;
     ul{
       display: flex;
+      position: relative;
+
+      > .active-bar {
+          content: " ";
+          height: 2px;
+          background: $green;
+          width: 100px;
+          transition: .2s;
+          position: absolute;
+          bottom: 0;
+      }
 
       li{
 

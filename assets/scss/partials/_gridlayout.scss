@@ -1,6 +1,12 @@
 //Grid layout
 
 .cm-grid-view{
+  &.three-col{
+    .cm-product-cell{
+      width: 33.33%;
+    }
+  }
+
   &.four-col{
     .cm-product-cell{
       width: 25%;
@@ -10,6 +16,12 @@
   &.five-col{
     .cm-product-cell{
       width: 20%;
+    }
+  }
+
+  &.six-col{
+    .cm-product-cell{
+      width: 16.6666666667%;
     }
   }
 

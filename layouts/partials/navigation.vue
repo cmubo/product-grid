@@ -2,13 +2,14 @@
   <header>
     <div class="header-inner-container">
       <div class="logo">
-        <h1>Product Customiser</h1>
+        <h1>CM Product Customiser</h1>
       </div>
       <nav>
-        <ul class="list-reset">
+        <ul class="list-reset nav-ul" :data-active-item="currentNavItem">
           <li><nuxt-link to="/">Home</nuxt-link></li>
           <li><nuxt-link to="/styles/style1">Style 1</nuxt-link></li>
           <li><nuxt-link to="/styles/style2">Style 2</nuxt-link></li>
+          <span class="active-bar"></span>
         </ul>
       </nav>
       <div class="help-button">
@@ -20,6 +21,40 @@
 
 <script>
     export default {
+      data: function() {
+        return {
+          currentNavItem: null
+        }
+      },
+      mounted: function() {
+        this.currentNavItemAnimate();
 
+      },
+      methods: {
+        currentNavItemAnimate(){
+          let navItems = document.querySelectorAll(".nav-ul > li > a"),
+              activeBar = document.querySelector(".nav-ul > .active-bar");
+
+          for (let i = 0; i < navItems.length; i++){
+            if (navItems[i].classList.contains("nuxt-link-exact-active")){
+              console.log(navItems[i]);
+              this.currentNavItem = i * 100;
+            }
+
+
+            activeBar.style.transform = `translateX(${this.currentNavItem}px)`;
+            console.log("hello");
+          }
+        }
+      },
+      watch: {
+        '$route.path': function() {
+          let self = this;
+          //Set timeout so function call is placed after the methods in the event loop
+          setTimeout(function(){
+              self.currentNavItemAnimate();
+          }, 0);
+        }
+      },
     }
 </script>
