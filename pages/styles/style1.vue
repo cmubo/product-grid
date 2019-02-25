@@ -6,15 +6,15 @@
       <h3>Product</h3>
       <div class="config-row">
         <label>Product BG</label>
-        <input v-model="colours.productBackground" placeholder="#ffffff"></input>
+        <input v-model="colors.productBackground" placeholder="#ffffff"></input>
       </div>
       <div class="config-row">
         <label>Title</label>
-        <input v-model="colours.title" placeholder="#ffffff"></input>
+        <input v-model="colors.title" placeholder="#ffffff"></input>
       </div>
       <div class="config-row">
         <label>Price</label>
-        <input v-model="colours.price" placeholder="#ffffff"></input>
+        <input v-model="colors.price" placeholder="#ffffff"></input>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@
     </div>
     <div class="cm-products cm-grid-view cm-style-1 five-col">
       <div class="cm-product-cell" v-for="item in productsList">
-        <div class="cm-product-inner" :style="{backgroundColor: colours.productBackground}">
+        <div class="cm-product-inner" :style="{backgroundColor: colors.productBackground}">
           <!-- TODO: Out of stock -->
           <!-- TODO: On sale -->
           <!-- TODO: Space for star rating/other snippet -->
@@ -45,20 +45,20 @@
           </div>
           <div class="cm-product-title">
             <a href="">
-              <div class="cm-title" :style="{color: colours.title}">{{ item.title }}</div>
+              <div class="cm-title" :style="{color: colors.title}">{{ item.title }}</div>
             </a>
           </div>
           <div class="cm-product-price">
-            <div class="cm-price" :style="{color: colours.price}">{{ item.variants[0].price}}</div>
+            <div class="cm-price" :style="{color: colors.price}">{{ item.variants[0].price}}</div>
           </div>
 
           <div class="cm-product-price price-with-sale" v-if="item.variants[0].compare_at_price">
-            <div class="cm-price" :style="{color: colours.price}">{{ item.variants[0].price}}</div>
-            <div class="compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: colours.salePrice}">{{ item.variants[0].compare_at_price }}</div>
+            <div class="cm-price" :style="{color: colors.price}">{{ item.variants[0].price}}</div>
+            <div class="compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: colors.salePrice}">{{ item.variants[0].compare_at_price }}</div>
           </div>
 
           <div class="cm-links">
-            <a class="cm-cart-link" :style="{backgroundColor: colours.addToCart}">Add To Cart</a>
+            <a class="cm-cart-link" :style="{backgroundColor: colors.addToCart}">Add To Cart</a>
             <a class="cm-view-link">View Product</a>
           </div>
         </div>
@@ -84,10 +84,10 @@ export default {
       AllProductsJson: null,
       productsList: null,
       productsShown: false,
-      colours: {
+      colors: {
         pageBackground: "#000000",
         productBackground: "#ffffff",
-        title: "#000000",
+        titleColor: "#000000",
         price: "#000000",
         salePrice: "#ff0000",
         addToCart: "#00ff00",
