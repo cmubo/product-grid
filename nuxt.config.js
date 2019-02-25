@@ -1,6 +1,5 @@
 const pkg = require('./package')
 
-
 module.exports = {
   mode: 'universal',
 
@@ -15,9 +14,22 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Montserrat' }]
   },
+
+  server: {
+    port: 3232, // default: 3000
+  },
+
+
+  /*
+  ** Custom Shopify api
+   */
+  serverMiddleware: [
+     "~/api/shopify.js",
+     // {path: '/productsapi', handler: '~/api/products.js'}
+  ],
 
   /*
   ** Customize the progress-bar color
@@ -28,6 +40,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '@/assets/scss/main.scss'
   ],
 
   /*
@@ -58,7 +71,7 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+
     }
   }
 }

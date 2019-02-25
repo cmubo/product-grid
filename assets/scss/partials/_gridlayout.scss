@@ -1,0 +1,128 @@
+//Grid layout
+
+.cm-grid-view {
+  &.three-col {
+    .cm-product-cell {
+      width: 33.33%;
+    }
+  }
+
+  &.four-col {
+    .cm-product-cell {
+      width: 25%;
+    }
+  }
+
+  &.five-col {
+    .cm-product-cell {
+      width: 20%;
+    }
+  }
+
+  &.six-col {
+    .cm-product-cell {
+      width: 16.6666666667%;
+    }
+  }
+
+  &.cm-style-1 {
+    .cm-product-cell {
+      padding: 15px;
+      display: flex;
+
+      .cm-product-inner {
+        position: relative;
+        padding: 10px;
+        width: 100%;
+        background: $white;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 70px !important; // Important to stop configurator overriding bottom padding needed for buttons
+        transition: 0.3s;
+
+        // Default inherited styles
+        color: $black;
+        font-size: $titleFontSize;
+
+        .cm-product-img {
+          position: relative;
+          width: 100%;
+          padding: 50%;
+          height: 0;
+          background-size: contain !important;
+          background-position: center center;
+          background-repeat: no-repeat;
+
+          > a {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+          }
+
+          img {
+            width: 0;
+            height: 0;
+          }
+        }
+
+        .cm-product-title {
+          text-align: center;
+
+          padding-bottom: 15px;
+
+          a {
+            color: $black;
+            text-decoration: none;
+          }
+        }
+
+        .cm-product-price {
+          flex-grow: 1;
+          text-align: center;
+          font-weight: bold;
+        }
+
+        .cm-links {
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          opacity: 0;
+          visibility: hidden;
+          transition: 0.3s;
+
+          > a {
+            background: red;
+            color: $white;
+            font-size: $linkFontSize;
+            font-weight: bold;
+            text-decoration: none;
+            width: 50%;
+            display: block;
+            line-height: 25px;
+            padding: 5px;
+            text-align: center;
+
+            &.cm-cart-link {
+              background: blue;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        .cm-product-inner {
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+          .cm-links {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
