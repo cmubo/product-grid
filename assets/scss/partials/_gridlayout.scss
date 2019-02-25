@@ -40,6 +40,10 @@
         padding-bottom: 70px;
         transition: 0.3s;
 
+        // Default inherited styles
+        color: $black;
+        font-size: $titleFontSize;
+
         .cm-product-img {
           position: relative;
           width: 100%;
@@ -65,8 +69,7 @@
 
         .cm-product-title {
           text-align: center;
-          color: $black;
-          font-size: $titleFontSize;
+
           padding-bottom: 15px;
 
           a {
@@ -92,8 +95,8 @@
           transition: 0.3s;
 
           > a {
-            background: red; // TODO: Make changable
-            color: $white; // TODO: Make changable
+            background: red;
+            color: $white;
             font-size: $linkFontSize;
             font-weight: bold;
             text-decoration: none;
