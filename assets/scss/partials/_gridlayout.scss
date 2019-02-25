@@ -37,7 +37,7 @@
         background: $white;
         display: flex;
         flex-direction: column;
-        padding-bottom: 70px;
+        padding-bottom: 70px !important; // Important to stop configurator overriding bottom padding needed for buttons
         transition: 0.3s;
 
         // Default inherited styles
