@@ -121,15 +121,20 @@
   <div class="cm-products-container">
     <div class="cm-products-actions">
       <!-- TODO: Only show col count if in grid view -->
-      <div class="col-count-selector">
-        <a href="#" class="three-col-btn col-count-btn"></a>
-        <a href="#" class="four-col-btn col-count-btn"></a>
-        <a href="#" class="five-col-btn col-count-btn"></a>
-        <a href="#" class="six-col-btn col-count-btn"></a>
+
+      <div class="column-count">
+        <div class="col-count-selector">
+          <div class="selected">{{ this.columnSelector.HRCount }}<span class="chevron-down"></span></div>
+          <div class="options">
+            <a href="#" class="col-count-btn" @on:click.prevent="selectColumnCount('three-col')">Three</a>
+            <a href="#" class="col-count-btn" @on:click.prevent="selectColumnCount('four-col')">Four</a>
+            <a href="#" class="col-count-btn" @on:click.prevent="selectColumnCount('five-col')">Five</a>
+            <a href="#" class="col-count-btn" @on:click.prevent="selectColumnCount('six-col')">Six</a></div>
+        </div>
       </div>
       <div class="col-type-selector"></div>
     </div>
-    <div class="cm-products cm-grid-view cm-style-1 five-col">
+    <div class="cm-products cm-grid-view cm-style-1" :class="columnSelector.columnCount">
       <div class="cm-product-cell" v-for="item in productsList">
         <div class="cm-product-inner" :style="{backgroundColor: cOptions.product.background,
           fontSize: cOptions.product.fontSize,
@@ -190,6 +195,10 @@ export default {
       AllProductsJson: null,
       productsList: null,
       productsShown: false,
+      columnSelector: {
+          columnCount: "five-col",
+          HRCount: "Five Columns"
+      },
       cOptions: {
         //Product default null, CSS is used instead.
         page: {
@@ -264,6 +273,12 @@ export default {
           console.log(error);
         });
     },
+
+    selectColumnCount(columns, hrcolumns) {
+      this.columnSelector.columnCount = value;
+      this.columnSelector.HRCount = hrcolumns;
+
+    }
 
   }
 }
