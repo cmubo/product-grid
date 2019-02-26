@@ -34,7 +34,6 @@ export default {
   },
   mounted: function() {
     this.currentNavItemAnimate();
-
   },
   methods: {
     currentNavItemAnimate() {
@@ -47,9 +46,7 @@ export default {
           this.currentNavItem = i * 100;
         }
 
-
         activeBar.style.transform = `translateX(${this.currentNavItem}px)`;
-        console.log("hello");
       }
     }
   },
