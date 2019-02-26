@@ -1,122 +1,7 @@
 <template>
 <section class="site-container split-config">
 
-  <div class="product-configurator">
-    <div class="config-container">
-      <h3>Page</h3>
-      <div class="config-item">
-        <label>Background</label>
-        <input data-c-object="page.background" placeholder="#ffffff"></input>
-      </div>
-
-      <h3>Product Cell</h3>
-      <div class="config-item">
-        <label>padding</label>
-        <input data-c-object="cell.padding" placeholder="15px"></input>
-      </div>
-
-      <h3>Product</h3>
-      <div class="config-item">
-        <label>Background</label>
-        <input data-c-object="product.background" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Color</label>
-        <input data-c-object="product.color" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Font Size</label>
-        <input data-c-object="product.fontSize" placeholder="0.875rem"></input>
-      </div>
-      <div class="config-item">
-        <label>Font Family
-          <Tooltip content="Whatever font you use needs to be pre-installed onto your computer."/>
-        </label>
-        <input data-c-object="product.fontFamily" placeholder="Montserrat"></input>
-      </div>
-      <div class="config-item full-width dual-inputs">
-        <label>Padding - X Y</label>
-        <div class="di-container">
-          <input data-c-object="product.paddingX" placeholder="15px"></input>
-          <input data-c-object="product.paddingY" placeholder="15px"></input>
-        </div>
-      </div>
-
-      <h3>Title</h3>
-      <div class="config-item">
-        <label>Color</label>
-        <input data-c-object="title.color" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Font Size</label>
-        <input data-c-object="title.fontSize" placeholder="0.875rem"></input>
-      </div>
-
-      <h3>Price</h3>
-      <div class="config-item">
-        <label>Color</label>
-        <input data-c-object="price.color" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Font Size</label>
-        <input data-c-object="price.fontSize" placeholder="0.875rem"></input>
-      </div>
-
-      <h3>Sale Price</h3>
-      <div class="config-item">
-        <label>Color</label>
-        <input data-c-object="sale.color" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Font Size</label>
-        <input data-c-object="sale.fontSize" placeholder="0.875rem"></input>
-      </div>
-      <div class="config-item">
-        <label>Text Decoration</label>
-        <input data-c-object="sale.textDecoration" placeholder="none"></input>
-      </div>
-
-      <h3>Sale Emblem</h3>
-      <div class="config-item">
-        <label>Color</label>
-        <input data-c-object="sale.color" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Font Size</label>
-        <input data-c-object="sale.fontSize" placeholder="0.875rem"></input>
-      </div>
-
-      <h3>Add To Cart</h3>
-      <div class="config-item">
-        <label>Background</label>
-        <input data-c-object="addToCart.background" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Color</label>
-        <input data-c-object="addToCart.color" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Font Size</label>
-        <input data-c-object="addToCart.fontSize" placeholder="0.875rem"></input>
-      </div>
-
-      <h3>View Product</h3>
-      <div class="config-item">
-        <label>Background</label>
-        <input data-c-object="viewProduct.background" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Color</label>
-        <input data-c-object="viewProduct.color" placeholder="#ffffff"></input>
-      </div>
-      <div class="config-item">
-        <label>Font Size</label>
-        <input data-c-object="viewProduct.fontSize" placeholder="0.875rem"></input>
-      </div>
-
-
-    </div>
-  </div>
+  <Customiser />
   <!-- TODO: Create a list view class which changes layout of products to full width -->
   <div class="cm-products-container">
     <div class="cm-products-actions">
@@ -179,12 +64,12 @@
 
 <script>
 import axios from 'axios';
-import Tooltip from '~/components/tooltip.vue';
+import Customiser from '~/components/customiser.vue';
 import { mapState } from 'vuex';
 
 export default {
   components: {
-    Tooltip
+    Customiser
   },
   data: function() {
     return {
@@ -192,7 +77,6 @@ export default {
       AllProductsJson: null,
       productsList: null,
       productsShown: false,
-      typingTimer: null,
       columnSelector: {
           columnCount: "five-col",
           HRCount: "Five Columns"
@@ -211,18 +95,8 @@ export default {
     document.addEventListener('click', function(){
       document.querySelector('.col-count-selector').classList.remove("active");
     });
-
-    let customiserInputs = document.querySelectorAll(".config-container input");
-    for (let i = 0; i < customiserInputs.length; i++){
-      customiserInputs[i].addEventListener('keyup', function(e){
-        self.customiserInput(e);
-      });
-    }
   },
   methods: {
-    changeColor() {
-      this.$store.commit('customiser/changeColor', 'red')
-    },
     //TODO: Move these products into the vue store so that product images can be changed
     getAllProducts() {
       let self = this
@@ -252,19 +126,6 @@ export default {
         selector.classList.add("active");
       }
     },
-
-    customiserInput(e){
-      let self = this;
-      let objectArray = e.srcElement.dataset.cObject.split(".");
-
-      clearTimeout(this.typingTimer);
-      if (e.srcElement.value) {
-        this.typingTimer = setTimeout(function(){
-          self.$store.commit('customiser/setCustomiserValues', {value: e.srcElement.value, objectArray: objectArray});
-        }, 1000);
-      }
-
-    }
 
   }
 }
