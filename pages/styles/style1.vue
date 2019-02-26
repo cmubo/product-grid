@@ -123,13 +123,13 @@
       <!-- TODO: Only show col count if in grid view -->
 
       <div class="column-count">
-        <div class="col-count-selector">
+        <div class="col-count-selector" v-on:click="toggleColumns($event)">
           <div class="selected">{{ this.columnSelector.HRCount }}<span class="chevron-down"></span></div>
           <div class="options">
-            <a href="#" class="col-count-btn" @on:click.prevent="selectColumnCount('three-col')">Three</a>
-            <a href="#" class="col-count-btn" @on:click.prevent="selectColumnCount('four-col')">Four</a>
-            <a href="#" class="col-count-btn" @on:click.prevent="selectColumnCount('five-col')">Five</a>
-            <a href="#" class="col-count-btn" @on:click.prevent="selectColumnCount('six-col')">Six</a></div>
+            <a href="#" class="col-count-btn" v-on:click.prevent="selectColumnCount('three-col', 'Three Columns', $event)">Three</a>
+            <a href="#" class="col-count-btn" v-on:click.prevent="selectColumnCount('four-col', 'Four Columns', $event)">Four</a>
+            <a href="#" class="col-count-btn" v-on:click.prevent="selectColumnCount('five-col', 'Five Columns', $event)">Five</a>
+            <a href="#" class="col-count-btn" v-on:click.prevent="selectColumnCount('six-col', 'Six Columns', $event)">Six</a></div>
         </div>
       </div>
       <div class="col-type-selector"></div>
@@ -256,6 +256,10 @@ export default {
   },
   mounted: function() {
     this.getAllProducts();
+
+    document.addEventListener('click', function(){
+      document.querySelector('.col-count-selector').classList.remove("active");
+    });
   },
   methods: {
     //TODO: Move these products into the vue store so that product images can be changed
@@ -266,18 +270,26 @@ export default {
           self.shopifyProductResponse = response.data.body;
           self.productsList = JSON.parse(response.data.body).products;
           self.productsShown = true;
-
-          console.log(response.data.body);
         })
         .catch(function(error) {
-          console.log(error);
+          console.error(error);
         });
     },
 
-    selectColumnCount(columns, hrcolumns) {
-      this.columnSelector.columnCount = value;
+    selectColumnCount(columns, hrcolumns, e) {
+      this.columnSelector.columnCount = columns;
       this.columnSelector.HRCount = hrcolumns;
+      this.toggleColumns(e);
+    },
 
+    toggleColumns(e){
+      e.stopPropagation();
+      let selector = document.querySelector(".col-count-selector");
+      if (selector.classList.contains("active")) {
+        selector.classList.remove("active");
+      } else {
+        selector.classList.add("active");
+      }
     }
 
   }
