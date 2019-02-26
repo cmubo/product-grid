@@ -30,7 +30,7 @@
       </div>
       <div class="config-item">
         <label>Font Family
-          <span class="config-tooltip" data-content="Whatever font you use needs to be already installed onto your computer.">?</span>
+          <Tooltip content="Whatever font you use needs to be pre-installed onto your computer."/>
         </label>
         <input v-model="cOptions.product.fontFamily" placeholder="Montserrat"></input>
       </div>
@@ -175,13 +175,14 @@
 
 <script>
 import axios from 'axios';
+import Tooltip from '~/components/tooltip.vue';
 import {
   mapState
 } from 'vuex';
 
 export default {
   components: {
-
+    Tooltip
   },
   data: function() {
     return {

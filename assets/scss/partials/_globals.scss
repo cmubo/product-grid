@@ -70,3 +70,38 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+.config-tooltip{
+	display: flex;
+	position: relative;
+
+	svg{
+		height: 12px;
+		width: 12px;
+	}
+
+	&:after{
+		content: attr(data-content);
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 150px;
+		z-index: 1;
+		background: hsl(0, 0%, 100%);
+		color: hsl(0, 0%, 0%);
+		text-transform: none;
+		text-align: center;
+		padding: 4px;
+		border-radius: 3px;
+		border: 1px solid hsl(0, 0%, 0%);
+
+		display: none;
+	}
+
+	&:hover{
+		&:after{
+			display: block;
+		}
+	}
+}
