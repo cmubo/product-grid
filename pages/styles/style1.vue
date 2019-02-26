@@ -84,9 +84,9 @@ export default {
     }
   },
   computed: {
-    customiserOptions () {
-      return this.$store.state.customiser.cOptions;
-    }
+    ...mapState({
+      customiserOptions: state => state.customiser.cOptions
+    })
   },
   mounted: function() {
     let self = this;
