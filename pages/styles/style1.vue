@@ -20,13 +20,13 @@
     </div>
     <div class="cm-products cm-grid-view cm-style-1" :class="columnSelector.columnCount">
       <div class="cm-product-cell" v-for="item in productsList">
-        <div class="cm-product-inner" :style="{backgroundColor: customiserOptions.product.background,
-          fontSize: customiserOptions.product.fontSize,
-          fontFamily: customiserOptions.product.fontFamily,
-          color: customiserOptions.product.color,
-          paddingTop: customiserOptions.product.paddingY,
-          paddingLeft: customiserOptions.product.paddingX,
-          paddingRight: customiserOptions.product.paddingX}">
+        <div class="cm-product-inner" :style="{backgroundColor: product.background,
+          fontSize: product.fontSize,
+          fontFamily: product.fontFamily,
+          color: product.color,
+          paddingTop: product.paddingY,
+          paddingLeft: product.paddingX,
+          paddingRight: product.paddingX}">
           <!-- TODO: Out of stock -->
           <!-- TODO: On sale -->
           <!-- TODO: Space for star rating/other snippet -->
@@ -39,21 +39,21 @@
           </div>
           <div class="cm-product-title">
             <a href="#">
-              <div class="cm-title" :style="{color: customiserOptions.title.color, fontSize: customiserOptions.title.fontSize}">{{ item.title }}</div>
+              <div class="cm-title" :style="{color: title.color, fontSize: title.fontSize}">{{ item.title }}</div>
             </a>
           </div>
           <div class="cm-product-price" v-if="item.variants[0].compare_at_price === null">
-            <div class="cm-price" :style="{color: customiserOptions.price.color, fontSize: customiserOptions.price.fontSize}">{{ item.variants[0].price}}</div>
+            <div class="cm-price" :style="{color: price.color, fontSize: price.fontSize}">{{ item.variants[0].price}}</div>
           </div>
 
           <div class="cm-product-price price-with-sale" v-if="item.variants[0].compare_at_price">
-            <div class="cm-price" :style="{color: customiserOptions.price.color, fontSize: customiserOptions.price.fontSize}">{{ item.variants[0].price}}</div>
-            <div class="compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: customiserOptions.sale.color, fontSize: customiserOptions.sale.fontSize, textDecoration: customiserOptions.sale.textDecoration}">{{ item.variants[0].compare_at_price }}</div>
+            <div class="cm-price" :style="{color: price.color, fontSize: price.fontSize}">{{ item.variants[0].price}}</div>
+            <div class="compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: sale.color, fontSize: sale.fontSize, textDecoration: sale.textDecoration}">{{ item.variants[0].compare_at_price }}</div>
           </div>
 
           <div class="cm-links">
-            <a class="cm-cart-link" :style="{backgroundColor: customiserOptions.addToCart.background, fontSize: customiserOptions.addToCart.fontSize, color: customiserOptions.addToCart.color}">Add To Cart</a>
-            <a class="cm-view-link" :style="{backgroundColor: customiserOptions.viewProduct.background, fontSize: customiserOptions.viewProduct.fontSize, color: customiserOptions.viewProduct.color}">View Product</a>
+            <a class="cm-cart-link" :style="{backgroundColor: addToCart.background, fontSize: addToCart.fontSize, color: addToCart.color}">Add To Cart</a>
+            <a class="cm-view-link" :style="{backgroundColor: viewProduct.background, fontSize: viewProduct.fontSize, color: viewProduct.color}">View Product</a>
           </div>
         </div>
       </div>
@@ -85,7 +85,13 @@ export default {
   },
   computed: {
     ...mapState({
-      customiserOptions: state => state.customiser.cOptions
+      product: state => state.customiser.cOptions.product,
+      image: state => state.customiser.cOptions.image,
+      title: state => state.customiser.cOptions.title,
+      price: state => state.customiser.cOptions.price,
+      sale: state => state.customiser.cOptions.sale,
+      addToCart: state => state.customiser.cOptions.addToCart,
+      viewProduct: state => state.customiser.cOptions.viewProduct
     })
   },
   mounted: function() {
