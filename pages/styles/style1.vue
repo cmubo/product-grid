@@ -6,13 +6,13 @@
       <h3>Page</h3>
       <div class="config-item">
         <label>Background</label>
-        <input v-model="oldcOptions.page.background" placeholder="#ffffff"></input>
+        <input data-c-object="page.background" placeholder="#ffffff"></input>
       </div>
 
       <h3>Product Cell</h3>
       <div class="config-item">
         <label>padding</label>
-        <input v-model="oldcOptions.cell.padding" placeholder="15px"></input>
+        <input data-c-object="cell.padding" placeholder="15px"></input>
       </div>
 
       <h3>Product</h3>
@@ -22,96 +22,96 @@
       </div>
       <div class="config-item">
         <label>Color</label>
-        <input v-model="oldcOptions.product.color" placeholder="#ffffff"></input>
+        <input data-c-object="product.color" placeholder="#ffffff"></input>
       </div>
       <div class="config-item">
         <label>Font Size</label>
-        <input v-model="oldcOptions.product.fontSize" placeholder="0.875rem"></input>
+        <input data-c-object="product.fontSize" placeholder="0.875rem"></input>
       </div>
       <div class="config-item">
         <label>Font Family
           <Tooltip content="Whatever font you use needs to be pre-installed onto your computer."/>
         </label>
-        <input v-model="oldcOptions.product.fontFamily" placeholder="Montserrat"></input>
+        <input data-c-object="product.fontFamily" placeholder="Montserrat"></input>
       </div>
       <div class="config-item full-width dual-inputs">
         <label>Padding - X Y</label>
         <div class="di-container">
-          <input v-model="oldcOptions.product.paddingX" placeholder="15px"></input>
-          <input v-model="oldcOptions.product.paddingY" placeholder="15px"></input>
+          <input data-c-object="product.paddingX" placeholder="15px"></input>
+          <input data-c-object="product.paddingY" placeholder="15px"></input>
         </div>
       </div>
 
       <h3>Title</h3>
       <div class="config-item">
         <label>Color</label>
-        <input v-model="oldcOptions.title.color" placeholder="#ffffff"></input>
+        <input data-c-object="title.color" placeholder="#ffffff"></input>
       </div>
       <div class="config-item">
         <label>Font Size</label>
-        <input v-model="oldcOptions.title.fontSize" placeholder="0.875rem"></input>
+        <input data-c-object="title.fontSize" placeholder="0.875rem"></input>
       </div>
 
       <h3>Price</h3>
       <div class="config-item">
         <label>Color</label>
-        <input v-model="oldcOptions.price.color" placeholder="#ffffff"></input>
+        <input data-c-object="price.color" placeholder="#ffffff"></input>
       </div>
       <div class="config-item">
         <label>Font Size</label>
-        <input v-model="oldcOptions.price.fontSize" placeholder="0.875rem"></input>
+        <input data-c-object="price.fontSize" placeholder="0.875rem"></input>
       </div>
 
       <h3>Sale Price</h3>
       <div class="config-item">
         <label>Color</label>
-        <input v-model="oldcOptions.sale.color" placeholder="#ffffff"></input>
+        <input data-c-object="sale.color" placeholder="#ffffff"></input>
       </div>
       <div class="config-item">
         <label>Font Size</label>
-        <input v-model="oldcOptions.sale.fontSize" placeholder="0.875rem"></input>
+        <input data-c-object="sale.fontSize" placeholder="0.875rem"></input>
       </div>
       <div class="config-item">
         <label>Text Decoration</label>
-        <input v-model="oldcOptions.sale.textDecoration" placeholder="none"></input>
+        <input data-c-object="sale.textDecoration" placeholder="none"></input>
       </div>
 
       <h3>Sale Emblem</h3>
       <div class="config-item">
         <label>Color</label>
-        <input v-model="oldcOptions.sale.color" placeholder="#ffffff"></input>
+        <input data-c-object="sale.color" placeholder="#ffffff"></input>
       </div>
       <div class="config-item">
         <label>Font Size</label>
-        <input v-model="oldcOptions.sale.fontSize" placeholder="0.875rem"></input>
+        <input data-c-object="sale.fontSize" placeholder="0.875rem"></input>
       </div>
 
       <h3>Add To Cart</h3>
       <div class="config-item">
         <label>Background</label>
-        <input v-model="oldcOptions.addToCart.background" placeholder="#ffffff"></input>
+        <input data-c-object="addToCart.background" placeholder="#ffffff"></input>
       </div>
       <div class="config-item">
         <label>Color</label>
-        <input v-model="oldcOptions.addToCart.color" placeholder="#ffffff"></input>
+        <input data-c-object="addToCart.color" placeholder="#ffffff"></input>
       </div>
       <div class="config-item">
         <label>Font Size</label>
-        <input v-model="oldcOptions.addToCart.fontSize" placeholder="0.875rem"></input>
+        <input data-c-object="addToCart.fontSize" placeholder="0.875rem"></input>
       </div>
 
       <h3>View Product</h3>
       <div class="config-item">
         <label>Background</label>
-        <input v-model="oldcOptions.viewProduct.background" placeholder="#ffffff"></input>
+        <input data-c-object="viewProduct.background" placeholder="#ffffff"></input>
       </div>
       <div class="config-item">
         <label>Color</label>
-        <input v-model="oldcOptions.viewProduct.color" placeholder="#ffffff"></input>
+        <input data-c-object="viewProduct.color" placeholder="#ffffff"></input>
       </div>
       <div class="config-item">
         <label>Font Size</label>
-        <input v-model="oldcOptions.viewProduct.fontSize" placeholder="0.875rem"></input>
+        <input data-c-object="viewProduct.fontSize" placeholder="0.875rem"></input>
       </div>
 
 
@@ -121,8 +121,6 @@
   <div class="cm-products-container">
     <div class="cm-products-actions">
       <!-- TODO: Only show col count if in grid view -->
-      <div class="" v-on:click="changeColor()">{{ $store.state.customiser.color }}</div>
-      <div class="">{{ $store.state.customiser.colours.pageBackground }}</div>
       <div class="column-count">
         <div class="col-count-selector" v-on:click="toggleColumns($event)">
           <div class="selected">{{ this.columnSelector.HRCount }}<span class="chevron-down"></span></div>
@@ -137,13 +135,13 @@
     </div>
     <div class="cm-products cm-grid-view cm-style-1" :class="columnSelector.columnCount">
       <div class="cm-product-cell" v-for="item in productsList">
-        <div class="cm-product-inner" :style="{backgroundColor: oldcOptions.product.background,
-          fontSize: oldcOptions.product.fontSize,
-          fontFamily: oldcOptions.product.fontFamily,
-          color: oldcOptions.product.color,
-          paddingTop: oldcOptions.product.paddingY,
-          paddingLeft: oldcOptions.product.paddingX,
-          paddingRight: oldcOptions.product.paddingX}">
+        <div class="cm-product-inner" :style="{backgroundColor: customiserOptions.product.background,
+          fontSize: customiserOptions.product.fontSize,
+          fontFamily: customiserOptions.product.fontFamily,
+          color: customiserOptions.product.color,
+          paddingTop: customiserOptions.product.paddingY,
+          paddingLeft: customiserOptions.product.paddingX,
+          paddingRight: customiserOptions.product.paddingX}">
           <!-- TODO: Out of stock -->
           <!-- TODO: On sale -->
           <!-- TODO: Space for star rating/other snippet -->
@@ -156,21 +154,21 @@
           </div>
           <div class="cm-product-title">
             <a href="#">
-              <div class="cm-title" :style="{color: oldcOptions.title.color, fontSize: oldcOptions.title.fontSize}">{{ item.title }}</div>
+              <div class="cm-title" :style="{color: customiserOptions.title.color, fontSize: customiserOptions.title.fontSize}">{{ item.title }}</div>
             </a>
           </div>
           <div class="cm-product-price" v-if="item.variants[0].compare_at_price === null">
-            <div class="cm-price" :style="{color: oldcOptions.price.color, fontSize: oldcOptions.price.fontSize}">{{ item.variants[0].price}}</div>
+            <div class="cm-price" :style="{color: customiserOptions.price.color, fontSize: customiserOptions.price.fontSize}">{{ item.variants[0].price}}</div>
           </div>
 
           <div class="cm-product-price price-with-sale" v-if="item.variants[0].compare_at_price">
-            <div class="cm-price" :style="{color: oldcOptions.price.color, fontSize: oldcOptions.price.fontSize}">{{ item.variants[0].price}}</div>
-            <div class="compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: oldcOptions.sale.color, fontSize: oldcOptions.sale.fontSize, textDecoration: oldcOptions.sale.textDecoration}">{{ item.variants[0].compare_at_price }}</div>
+            <div class="cm-price" :style="{color: customiserOptions.price.color, fontSize: customiserOptions.price.fontSize}">{{ item.variants[0].price}}</div>
+            <div class="compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: customiserOptions.sale.color, fontSize: customiserOptions.sale.fontSize, textDecoration: customiserOptions.sale.textDecoration}">{{ item.variants[0].compare_at_price }}</div>
           </div>
 
           <div class="cm-links">
-            <a class="cm-cart-link" :style="{backgroundColor: oldcOptions.addToCart.background, fontSize: oldcOptions.addToCart.fontSize, color: oldcOptions.addToCart.color}">Add To Cart</a>
-            <a class="cm-view-link" :style="{backgroundColor: oldcOptions.viewProduct.background, fontSize: oldcOptions.viewProduct.fontSize, color: oldcOptions.viewProduct.color}">View Product</a>
+            <a class="cm-cart-link" :style="{backgroundColor: customiserOptions.addToCart.background, fontSize: customiserOptions.addToCart.fontSize, color: customiserOptions.addToCart.color}">Add To Cart</a>
+            <a class="cm-view-link" :style="{backgroundColor: customiserOptions.viewProduct.background, fontSize: customiserOptions.viewProduct.fontSize, color: customiserOptions.viewProduct.color}">View Product</a>
           </div>
         </div>
       </div>
@@ -198,64 +196,14 @@ export default {
       columnSelector: {
           columnCount: "five-col",
           HRCount: "Five Columns"
-      },
-      oldcOptions: {
-        //Product default null, CSS is used instead.
-        page: {
-          background: null
-        },
-        cell: {
-          padding: null
-        },
-        product: {
-          //This will control many of the default values using css inheritance
-          background: null, // #fff
-          paddingX: null,  // 15px
-          paddingY: null,  // 15px
-          fontSize: null, // 0.875rem
-          fontFamily: null, // Montserrat
-          color: null, // #000000
-        },
-        title: {
-          color: null,
-          fontSize: null
-        },
-        price: {
-          color: null,
-          fontSize: null
-        },
-        sale: {
-          color: null,
-          fontSize: null,
-          textDecoration: null
-        },
-        saleEmblem: {
-          position: null,
-          background: null,
-          color: null,
-          borderRadius: null
-        },
-        image: {
-          hoverStyle: null, // This will Control whether user wants to hover and display the next image or not. Or any other image hover styles I think of.
-          bgStyle: null
-        },
-        addToCart: {
-          fontSize: null,
-          background: null,
-          color: null
-        },
-        viewProduct: {
-          fontSize: null,
-          background: null,
-          color: null,
-          hide: false
-        }
       }
     }
   },
-  computed: mapState([
-    'color', 'cOptions'
-  ]),
+  computed: {
+    customiserOptions () {
+      return this.$store.state.customiser.cOptions;
+    }
+  },
   mounted: function() {
     let self = this;
     this.getAllProducts();
