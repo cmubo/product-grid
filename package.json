@@ -11,9 +11,10 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "a-color-picker": "^1.1.7",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.4.0",
-    "@nuxtjs/axios": "^5.3.6"
+    "nuxt": "^2.4.0"
   },
   "devDependencies": {
     "express": "^4.16.4",

@@ -34,6 +34,7 @@
     }
 
     .config-item {
+      position: relative;
       width: 50%;
       color: $green;
       display: flex;
@@ -80,6 +81,20 @@
         &:active,
         &:focus {
           outline: 1px solid $green;
+        }
+      }
+
+      > .color-picker{
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 1;
+        display: none;
+      }
+
+      &.color-picker--active{
+        > .color-picker{
+          display: block;
         }
       }
     }

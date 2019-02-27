@@ -42,7 +42,6 @@ export default {
 
       for (let i = 0; i < navItems.length; i++) {
         if (navItems[i].classList.contains("nuxt-link-exact-active")) {
-          console.log(navItems[i]);
           this.currentNavItem = i * 100;
         }
 
