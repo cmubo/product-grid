@@ -1,7 +1,6 @@
 <template>
 <div class="product-configurator">
   <div class="config-container">
-    <div class="test-color-picker" acp-show-alpha>Test this</div>
     <h3>Page</h3>
     <div class="config-item">
       <label>Background</label>
