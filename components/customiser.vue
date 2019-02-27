@@ -19,13 +19,11 @@
     <div class="config-item">
       <label>Background</label>
       <input data-c-object="product.background" placeholder="#ffffff"></input>
-
       <Colorpicker />
     </div>
     <div class="config-item">
       <label>Color</label>
       <input data-c-object="product.color" placeholder="#ffffff"></input>
-
       <Colorpicker />
     </div>
     <div class="config-item">
@@ -50,6 +48,7 @@
     <div class="config-item">
       <label>Color</label>
       <input data-c-object="title.color" placeholder="#ffffff"></input>
+      <Colorpicker />
     </div>
     <div class="config-item">
       <label>Font Size</label>
@@ -60,6 +59,7 @@
     <div class="config-item">
       <label>Color</label>
       <input data-c-object="price.color" placeholder="#ffffff"></input>
+      <Colorpicker />
     </div>
     <div class="config-item">
       <label>Font Size</label>
@@ -70,6 +70,7 @@
     <div class="config-item">
       <label>Color</label>
       <input data-c-object="sale.color" placeholder="#ffffff"></input>
+      <Colorpicker />
     </div>
     <div class="config-item">
       <label>Font Size</label>
@@ -84,6 +85,7 @@
     <div class="config-item">
       <label>Color</label>
       <input data-c-object="sale.color" placeholder="#ffffff"></input>
+      <Colorpicker />
     </div>
     <div class="config-item">
       <label>Font Size</label>
@@ -94,10 +96,12 @@
     <div class="config-item">
       <label>Background</label>
       <input data-c-object="addToCart.background" placeholder="#ffffff"></input>
+      <Colorpicker />
     </div>
     <div class="config-item">
       <label>Color</label>
       <input data-c-object="addToCart.color" placeholder="#ffffff"></input>
+      <Colorpicker />
     </div>
     <div class="config-item">
       <label>Font Size</label>
@@ -108,10 +112,12 @@
     <div class="config-item">
       <label>Background</label>
       <input data-c-object="viewProduct.background" placeholder="#ffffff"></input>
+      <Colorpicker />
     </div>
     <div class="config-item">
       <label>Color</label>
       <input data-c-object="viewProduct.color" placeholder="#ffffff"></input>
+      <Colorpicker />
     </div>
     <div class="config-item">
       <label>Font Size</label>
