@@ -9,7 +9,7 @@
           <div class="style" v-for="(style, styleName) in block.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{styleName}}: {{style}};</div>
           <div class="closing-bracket">}</div>
           <br>
-          <!-- TODO: These will need to be replaced with a recurive component in the future so it can traverse through multiple children-->
+          <!-- TODO: These will need to be replaced with a recursive component in the future so it can traverse through multiple children-->
           <div v-if="block.pseudo" v-for="pseudoBlock in block.pseudo">
             <div class="selector">{{block.selector}}{{pseudoBlock.selector}} {</div>
             <div class="style" v-for="(pseudoStyle, pseudoStyleName) in pseudoBlock.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{pseudoStyleName}}: {{pseudoStyle}};</div>
@@ -77,7 +77,7 @@ export default {
             "padding-right": "15px",
             "background": "#ffffff",
             "color": "#000000",
-            "font-size": "0.875rem",
+            "font-size": "14px",
             "font-family": "Montserrat",
             "transition": ".3s", // TODO: Need to push this on style 1 only.
           }
@@ -132,7 +132,7 @@ export default {
               selector: "a .cm-title",
               attributes: {
                 "color": "#000000",
-                "font-size": "0.875rem"
+                "font-size": "14px"
               }
             }
           }
@@ -149,14 +149,14 @@ export default {
               selector: ".cm-price",
               attributes: {
                 "color": "#000000",
-                "font-size": "0.875rem"
+                "font-size": "14px"
               }
             },
             ".cm-compare-at-price": {
               selector: ".cm-compare-at-price",
               attributes: {
                 "color": "#000000",
-                "font-size": "0.875rem",
+                "font-size": "14px",
                 "text-decoration": "none"
               }
             }
@@ -184,7 +184,7 @@ export default {
                 "color": "#ffffff",
                 "padding": "5px",
                 "text-align": "center",
-                "font-size": "0.875rem",
+                "font-size": "14px",
                 "font-weight": "bold",
                 "text-decoration": "none",
                 "line-height": "25px",
@@ -193,7 +193,9 @@ export default {
             "> a.cm-cart-link": {
               selector: "> a.cm-cart-link",
               attributes: {
-                "background": "blue"
+                "background": "blue",
+                "color": "#fff",
+                "font-size": "14px"
               }
             }
           }
@@ -214,7 +216,19 @@ export default {
     })
   },
   mounted: function(){
-    this.generateCSS();
+    window.addEventListener('toggle-export', (event) => {
+      this.generateCSS();
+    }, false);
+
+    let exportOuter = document.querySelector(".export-outer");
+    exportOuter.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (!event.path.includes(document.querySelector(".export-inner"))) {
+          if (exportOuter.classList.contains("export-outer--active")){
+            exportOuter.classList.remove("export-outer--active");
+          }
+      }
+    })
   },
   methods: {
     generateCSS(){

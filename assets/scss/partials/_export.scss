@@ -3,9 +3,10 @@
   background: rgba(0,0,0,0.9);
   box-shadow: 0 0 3px black;
   top: 0;
-  right: 0;
-  //height: 100%;
-  //width: 100%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
 
   .export-container{
     display: flex;
@@ -39,5 +40,9 @@
         }
       }
     }
+  }
+
+  &.export-outer--active {
+    display: block;
   }
 }

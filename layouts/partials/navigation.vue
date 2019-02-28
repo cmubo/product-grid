@@ -19,7 +19,7 @@
       </ul>
     </nav>
     <div class="help-button">
-      <a href="#">Help</a>
+      <a href="#" v-on:click.prevent="openExport($event)">Help</a>
     </div>
   </div>
 </header>
@@ -46,6 +46,17 @@ export default {
         }
 
         activeBar.style.transform = `translateX(${this.currentNavItem}px)`;
+      }
+    },
+    openExport(event) {
+      if (document.querySelector(".export-outer")){
+        let exportOuter = document.querySelector(".export-outer");
+        window.dispatchEvent(new CustomEvent('toggle-export'));
+        if (exportOuter.classList.contains("export-outer--active")){
+            exportOuter.classList.remove("export-outer--active");
+        } else {
+          exportOuter.classList.add("export-outer--active");
+        }
       }
     }
   },

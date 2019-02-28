@@ -47,8 +47,7 @@ export const state = () => ({
     viewProduct: {
       "font-size": null,
       background: null,
-      color: null,
-      hide: false
+      color: null
     }
   }
 })
