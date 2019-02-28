@@ -52,8 +52,8 @@
           </div>
 
           <div class="cm-links">
-            <a class="cm-cart-link" :style="{backgroundColor: addToCart.background, fontSize: addToCart['font-size'], color: addToCart.color}">Add To Cart</a>
-            <a class="cm-view-link" :style="{backgroundColor: viewProduct.background, fontSize: viewProduct['font-size'], color: viewProduct.color}">View Product</a>
+            <a href="#" class="cm-cart-link" :style="{backgroundColor: addToCart.background, fontSize: addToCart['font-size'], color: addToCart.color}">Add To Cart</a>
+            <a href="#" class="cm-view-link" :style="{backgroundColor: viewProduct.background, fontSize: viewProduct['font-size'], color: viewProduct.color}">View Product</a>
           </div>
         </div>
       </div>
