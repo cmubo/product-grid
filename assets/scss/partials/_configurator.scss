@@ -34,6 +34,7 @@
     }
 
     .config-item {
+      position: relative;
       width: 50%;
       color: $green;
       display: flex;
@@ -60,6 +61,9 @@
       }
 
       label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 5px 0;
         text-transform: uppercase;
       }
@@ -78,6 +82,45 @@
         &:focus {
           outline: 1px solid $green;
         }
+      }
+
+      > .color-picker{
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 1;
+        display: none;
+      }
+
+      &.color-picker--active{
+        > .color-picker{
+          display: block;
+        }
+      }
+    }
+
+    .config-toggle {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      writing-mode: vertical-lr;
+      padding: 7px;
+      padding-top: 14px;
+      background: $black;
+      color: $white;
+      cursor: pointer;
+
+      &:after{
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0%;
+        width: 0;
+        height: 0;
+        border-left: 16px solid hsl(0, 0%, 0%);
+        border-top: 16px solid hsl(0, 0%, 0%);
+        border-bottom: 16px solid hsla(0, 0%, 0%, 0);
+        border-right: 16px solid hsla(0, 0%, 0%, 0);
       }
     }
   }

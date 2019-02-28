@@ -4,12 +4,13 @@ import NuxtLoading from './components/nuxt-loading.vue'
 import '../assets/scss/main.scss'
 
 import _6f6c098b from '../layouts/default.vue'
+import _d99bc2ca from '../layouts/partials/export.vue'
 import _879d6d0a from '../layouts/partials/navigation.vue'
 
-const layouts = { "_default": _6f6c098b,"_partials/navigation": _879d6d0a }
+const layouts = { "_default": _6f6c098b,"_partials/export": _d99bc2ca,"_partials/navigation": _879d6d0a }
 
 export default {
-  head: {"title":"product-grid","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"My hunky-dory Nuxt.js project"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Open+Sans|Roboto|Montserrat"}],"style":[],"script":[]},
+  head: {"title":"ProductGridCustomiser","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Customiser for a product grid."}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Open+Sans|Roboto|Montserrat"}],"style":[],"script":[]},
 
   render(h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })

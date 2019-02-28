@@ -1,6 +1,7 @@
 body {
 	background: $background;
 	font-family: $baseFont;
+	font-size: $bodyFontSize;
 
 	#__layout > div {
 		min-height: 100vh;
@@ -36,6 +37,12 @@ body {
 		flex-grow: 1;
 	}
 
+	.home-container{
+			margin-top: 100px;
+			text-align: center;
+			font-size: 2rem;
+	}
+
 	.split-config {
 		display: flex;
 		justify-content: flex-end;
@@ -46,12 +53,81 @@ body {
 			padding-right: 5%;
 			padding-top: 50px;
 			transition: 0.2s;
+
+			.cm-products-actions {
+				text-align: right;
+
+				> div {
+					display: inline-block;
+				}
+
+				.column-count {
+					.col-count-selector {
+						display: inline-block;
+						position: relative;
+
+						.selected {
+							border: 1px solid hsl(0, 0%, 0%);
+							padding: 5px;
+							display: flex;
+							align-items: center;
+							justify-content: space-between;
+							cursor: pointer;
+							width: 150px;
+
+							.chevron-down{
+								border-left: 4px solid hsla(0, 0%, 0%, 0);
+								border-right: 4px solid hsla(0, 0%, 0%, 0);
+								border-top: 6px solid hsl(0, 0%, 0%);
+								margin-left: 6px;
+							}
+						}
+
+						.options {
+							position: absolute;
+							width: 100%;
+							padding: 5px;
+							z-index: 1;
+							background: #fff;
+							border: 1px solid #000;
+							border-top: 0;
+							visibility: hidden;
+							opacity: 1;
+
+							a.col-count-btn {
+								display: block;
+								width: 100%;
+								text-decoration: none;
+								color: #000;
+								padding: 4px;
+								box-sizing: border-box;
+								border-bottom: 1px solid hsl(0, 0%, 94%);
+
+								&:last-child {
+									border-bottom: 0;
+								}
+
+								&:hover {
+									background: #000;
+									color: #fff;
+								}
+							}
+						}
+
+						&.active{
+							.options{
+								opacity: 1;
+								visibility: visible;
+							}
+						}
+					}
+				}
+			}
 		}
 
 		.cm-products {
 			display: flex;
 			flex-wrap: wrap;
-			align-items: flex-start;
 		}
 
 		&.hide-config {
@@ -70,4 +146,38 @@ body {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+.config-tooltip {
+	display: flex;
+	position: relative;
+
+	svg {
+		height: 12px;
+		width: 12px;
+	}
+
+	&:after {
+		content: attr(data-content);
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 150px;
+		z-index: 1;
+		background: hsl(0, 0%, 100%);
+		color: hsl(0, 0%, 0%);
+		text-transform: none;
+		text-align: center;
+		padding: 4px;
+		border-radius: 3px;
+		border: 1px solid hsl(0, 0%, 0%);
+		display: none;
+	}
+
+	&:hover {
+		&:after {
+			display: block;
+		}
+	}
 }

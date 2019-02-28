@@ -12,13 +12,16 @@
         <li>
           <nuxt-link to="/styles/style1">Style 1</nuxt-link>
         </li>
-        <li>
-          <nuxt-link to="/styles/style2">Style 2</nuxt-link>
-        </li>
         <span class="active-bar"></span>
       </ul>
     </nav>
-    <div class="help-button">
+    <div class="right-button export-button">
+      <a href="https://trello.com/b/UWTOxENW/product-grid" target="_blank">To-Do</a>
+    </div>
+    <div class="right-button export-button">
+      <a href="#" v-on:click.prevent="openExport($event)">Export</a>
+    </div>
+    <div class="right-button help-button">
       <a href="#">Help</a>
     </div>
   </div>
@@ -34,7 +37,6 @@ export default {
   },
   mounted: function() {
     this.currentNavItemAnimate();
-
   },
   methods: {
     currentNavItemAnimate() {
@@ -43,13 +45,21 @@ export default {
 
       for (let i = 0; i < navItems.length; i++) {
         if (navItems[i].classList.contains("nuxt-link-exact-active")) {
-          console.log(navItems[i]);
           this.currentNavItem = i * 100;
         }
 
-
         activeBar.style.transform = `translateX(${this.currentNavItem}px)`;
-        console.log("hello");
+      }
+    },
+    openExport(event) {
+      if (document.querySelector(".export-outer")){
+        let exportOuter = document.querySelector(".export-outer");
+        window.dispatchEvent(new CustomEvent('toggle-export'));
+        if (exportOuter.classList.contains("export-outer--active")){
+            exportOuter.classList.remove("export-outer--active");
+        } else {
+          exportOuter.classList.add("export-outer--active");
+        }
       }
     }
   },
