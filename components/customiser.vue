@@ -122,6 +122,7 @@
       <label>Font Size</label>
       <input data-c-object="viewProduct.font-size" placeholder="0.875rem"></input>
     </div>
+    <div class="config-toggle" v-on:click="toggleCustomiser()">Toggle</div>
   </div>
 </div>
 </template>
@@ -162,6 +163,11 @@ export default {
           objectArray: objectArray
         });
       }, 1000);
+    },
+    toggleCustomiser() {
+      let siteContainer = document.querySelector(".site-container");
+
+      siteContainer.classList.contains("hide-config") ? siteContainer.classList.remove("hide-config") : siteContainer.classList.add("hide-config");
     }
   }
 }

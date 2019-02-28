@@ -267,9 +267,7 @@ export default {
     exportOuter.addEventListener("click", (event) => {
       event.stopPropagation();
       if (!event.path.includes(document.querySelector(".export-inner"))) {
-          if (exportOuter.classList.contains("export-outer--active")){
-            exportOuter.classList.remove("export-outer--active");
-          }
+          if (exportOuter.classList.contains("export-outer--active")) exportOuter.classList.remove("export-outer--active");
       }
     })
   },
