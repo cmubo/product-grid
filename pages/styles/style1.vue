@@ -126,11 +126,7 @@ export default {
     toggleColumns(e){
       e.stopPropagation();
       let selector = document.querySelector(".col-count-selector");
-      if (selector.classList.contains("active")) {
-        selector.classList.remove("active");
-      } else {
-        selector.classList.add("active");
-      }
+      selector.classList.contains("active") ? selector.classList.remove("active") : selector.classList.add("active");
     },
 
   }

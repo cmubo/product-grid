@@ -40,11 +40,7 @@ export default {
           if (document.querySelector(".color-picker--active") !== element) document.querySelector(".color-picker--active").classList.remove('color-picker--active');
         }
 
-        if (element.classList.contains('color-picker--active')) {
-          element.classList.remove('color-picker--active');
-        } else {
-          element.classList.add('color-picker--active');
-        }
+        element.classList.contains('color-picker--active') ? element.classList.remove('color-picker--active') : element.classList.add('color-picker--active');
       }
     }
   }
