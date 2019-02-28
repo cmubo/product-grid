@@ -2,77 +2,21 @@
 <div class="export-container">
   <div class="export-inner">
     <div class="export-code-container">
-      <div class="top-bar"><span>CSS</span></div>
-      <code>
-        <div class="class-block">
-          <div>
-            .cm-product-cell, .cm-product-cell * {
-              <div><span>&nbsp;&nbsp;</span>box-sizing: border-box;</div>
-            }
-          </div>
-          <div>
-            .cm-product-cell:hover .cm-product-inner {
-              <div><span>&nbsp;&nbsp;</span>box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);</div>
-            }
-          </div>
-        </div>
+      <div class="top-bar"><span>CSS</span><span v-on:click="generateCSS()"> Refresh Styles</span></div>
+      <code class="css" v-if="styleType == 'css'">
+        <div v-for="block in css" class="style-block">
+          <div class="selector">{{block.selector}} {</div>
+          <div class="style" v-for="(style, styleName) in block.properties"><span v-if="whitespace" v-html="whitespace"></span>{{styleName}}: {{style}};</div>
+          <div class="closing-bracket">}</div>
+          <br>
 
-        <div class="class-block">
-          <div>
-            .cm-product-cell {
-              <div><span>&nbsp;&nbsp;</span>display: flex;</div>
-              <div class="reactive">
-                <span>&nbsp;&nbsp;</span>padding: <span v-if="cell.padding">{{cell.padding}}</span><span v-else>15px</span>;
-              </div>
-            }
-          </div>
-          <div>
-            .cm-product-cell:hover .cm-product-inner {
-              <div><span>&nbsp;&nbsp;</span>box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);</div>
-            }
+          <div v-if="block.pseudo" v-for="pseudoBlock in block.pseudo">
+            <div class="selector">{{block.selector}}{{pseudoBlock.selector}} {</div>
+            <div class="style" v-for="(pseudoStyle, pseudoStyleName) in pseudoBlock.properties"><span v-if="whitespace" v-html="whitespace"></span>{{pseudoStyleName}}: {{pseudoStyle}};</div>
+            <div class="closing-bracket">}</div>
+            <br>
           </div>
         </div>
-        <div class="class-block">
-          .cm-product-inner {
-            <div><span>&nbsp;&nbsp;</span>position: relative;</div>
-            <div><span>&nbsp;&nbsp;</span>width: 100%;</div>
-            <div><span>&nbsp;&nbsp;</span>display: flex;</div>
-            <div><span>&nbsp;&nbsp;</span>flex-direction: column;</div>
-            <div><span>&nbsp;&nbsp;</span>padding-bottom: 70px;</div>
-            <div class="reactive">
-              <div v-if="product.paddingX">
-                <div><span>&nbsp;&nbsp;</span>padding-left: {{product.paddingX}};</div>
-                <div><span>&nbsp;&nbsp;</span>padding-right: {{product.paddingX}};</div>
-              </div>
-              <div v-else>
-                <div><span>&nbsp;&nbsp;</span>padding-left: 10px;</div>
-                <div><span>&nbsp;&nbsp;</span>padding-right: 10px;</div>
-              </div>
-              <div>
-                <span>&nbsp;&nbsp;</span><span v-if="product.paddingY">{{product.paddingY}}</span><span v-else>padding-top: 10px</span>;
-              </div>
-            </div>
-            <div><span>&nbsp;&nbsp;</span>transition: 0.3s;</div>
-            <div class="reactive">
-              <span>&nbsp;&nbsp;</span>background-color: <span v-if="product.background">{{product.background}}</span><span v-else>#ffffff</span>;
-            </div>
-            <div class="reactive">
-              <span>&nbsp;&nbsp;</span>color: <span v-if="product.color">{{product.color}}</span><span v-else>#000000</span>;
-            </div>
-          }
-        </div>
-
-        <div class="class-block">
-          <div>
-            .cm-product-title {
-
-            }
-          </div>
-        </div>
-
-
-
-
       </code>
     </div>
   </div>
@@ -86,15 +30,53 @@ export default {
   data: function() {
     return {
       export: "",
+      // css: {
+      //   product: [],
+      //   title: [],
+      //   price: [],
+      //   sale: [],
+      //   saleEmblem: [],
+      //   image: [],
+      //   addToCart: [],
+      //   viewProduct: []
+      // },
+      currentStyle: "style1",
+      styleType: "css",
+      whitespace: "&nbsp; &nbsp;",
       css: {
-        product: [],
-        title: [],
-        price: [],
-        sale: [],
-        saleEmblem: [],
-        image: [],
-        addToCart: [],
-        viewProduct: []
+        ".cm-product-cell": {
+          selector: ".cm-product-cell",
+          properties: {
+            "display": "flex",
+            "padding": "15px",
+          }
+        },
+        ".cm-product-inner": {
+          selector: ".cm-product-inner",
+          properties: {
+            "position": "relative",
+            "display": "flex",
+            "flex-direction": "column",
+            "width": "100%",
+            "padding-bottom": "70px",
+            "padding-top": "15px",
+            "padding-left": "15px",
+            "padding-right": "15px",
+            "background": "#ffffff",
+            "color": "#000000",
+            "font-size": "0.875rem",
+            "family": "Montserrat",
+            // "transition": ".3s", TODO: Need to push this on style 1 only
+          },
+          pseudo: {
+            ":hover": {
+              selector: ":hover",
+              properties: {
+                "color": "red",
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -115,9 +97,16 @@ export default {
   },
   methods: {
     generateCSS(){
-      for (let i = 0; i < this.product.length; i++){
-        console.log(this.product[i]);
+      let productProperties = Object.entries(this.product);
+      for (let [property, style] of productProperties){
+        if (style !== null) this.css[".cm-product-inner"].properties[property] = style;
+
+        console.log(property);
+        console.log(style);
       }
+
+      // Place the specific style properties here.
+
     }
   }
 }
