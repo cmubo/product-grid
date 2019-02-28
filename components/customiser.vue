@@ -27,13 +27,13 @@
     </div>
     <div class="config-item">
       <label>Font Size</label>
-      <input data-c-object="product.fontSize" placeholder="0.875rem"></input>
+      <input data-c-object="product.font-size" placeholder="0.875rem"></input>
     </div>
     <div class="config-item">
       <label>Font Family
         <Tooltip content="Whatever font you use needs to be pre-installed onto your computer." />
       </label>
-      <input data-c-object="product.fontFamily" placeholder="Montserrat"></input>
+      <input data-c-object="product.font-family" placeholder="Montserrat"></input>
     </div>
     <div class="config-item full-width dual-inputs">
       <label>Padding - X Y</label>
@@ -51,7 +51,7 @@
     </div>
     <div class="config-item">
       <label>Font Size</label>
-      <input data-c-object="title.fontSize" placeholder="0.875rem"></input>
+      <input data-c-object="title.font-size" placeholder="0.875rem"></input>
     </div>
 
     <h3>Price</h3>
@@ -62,7 +62,7 @@
     </div>
     <div class="config-item">
       <label>Font Size</label>
-      <input data-c-object="price.fontSize" placeholder="0.875rem"></input>
+      <input data-c-object="price.font-size" placeholder="0.875rem"></input>
     </div>
 
     <h3>Sale Price</h3>
@@ -73,11 +73,11 @@
     </div>
     <div class="config-item">
       <label>Font Size</label>
-      <input data-c-object="sale.fontSize" placeholder="0.875rem"></input>
+      <input data-c-object="sale.font-size" placeholder="0.875rem"></input>
     </div>
     <div class="config-item">
       <label>Text Decoration</label>
-      <input data-c-object="sale.textDecoration" placeholder="none"></input>
+      <input data-c-object="sale.text-decoration" placeholder="none"></input>
     </div>
 
     <h3>Sale Emblem</h3>
@@ -88,7 +88,7 @@
     </div>
     <div class="config-item">
       <label>Font Size</label>
-      <input data-c-object="sale.fontSize" placeholder="0.875rem"></input>
+      <input data-c-object="sale.font-size" placeholder="0.875rem"></input>
     </div>
 
     <h3>Add To Cart</h3>
@@ -104,7 +104,7 @@
     </div>
     <div class="config-item">
       <label>Font Size</label>
-      <input data-c-object="addToCart.fontSize" placeholder="0.875rem"></input>
+      <input data-c-object="addToCart.font-size" placeholder="0.875rem"></input>
     </div>
 
     <h3>View Product</h3>
@@ -120,7 +120,7 @@
     </div>
     <div class="config-item">
       <label>Font Size</label>
-      <input data-c-object="viewProduct.fontSize" placeholder="0.875rem"></input>
+      <input data-c-object="viewProduct.font-size" placeholder="0.875rem"></input>
     </div>
   </div>
 </div>

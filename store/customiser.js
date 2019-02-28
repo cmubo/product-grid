@@ -12,40 +12,40 @@ export const state = () => ({
       background: null, // #fff
       paddingX: null, // 15px
       paddingY: null, // 15px
-      fontSize: null, // 0.875rem
-      fontFamily: null, // Montserrat
+      "font-size": null, // 0.875rem
+      "font-family": null, // Montserrat
       color: null, // #000000
     },
     title: {
       color: null,
-      fontSize: null
+      "font-size": null
     },
     price: {
       color: null,
-      fontSize: null
+      "font-size": null
     },
     sale: {
       color: null,
-      fontSize: null,
-      textDecoration: null
+      "font-size": null,
+      "text-decoration": null
     },
     saleEmblem: {
       position: null,
       background: null,
       color: null,
-      borderRadius: null
+      "border-radius": null
     },
     image: {
       hoverStyle: null, // This will Control whether user wants to hover and display the next image or not. Or any other image hover styles I think of.
       bgStyle: null
     },
     addToCart: {
-      fontSize: null,
+      "font-size": null,
       background: null,
       color: null
     },
     viewProduct: {
-      fontSize: null,
+      "font-size": null,
       background: null,
       color: null,
       hide: false
@@ -60,6 +60,7 @@ export const actions = {
 export const mutations = {
   setCustomiserValues(state, payload) {
     let objectArray = payload.objectArray;
+
     if (objectArray.length === 1) {
       state.cOptions[objectArray[0]] = payload.value;
     } else if (objectArray.length === 2) {

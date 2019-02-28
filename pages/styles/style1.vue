@@ -21,8 +21,8 @@
     <div class="cm-products cm-grid-view cm-style-1" :class="columnSelector.columnCount">
       <div class="cm-product-cell" v-for="item in productsList">
         <div class="cm-product-inner" :style="{backgroundColor: product.background,
-          fontSize: product.fontSize,
-          fontFamily: product.fontFamily,
+          fontSize: product['font-size'],
+          fontFamily: product['font-family'],
           color: product.color,
           paddingTop: product.paddingY,
           paddingLeft: product.paddingX,
@@ -39,21 +39,21 @@
           </div>
           <div class="cm-product-title">
             <a href="#">
-              <div class="cm-title" :style="{color: title.color, fontSize: title.fontSize}">{{ item.title }}</div>
+              <div class="cm-title" :style="{color: title.color, fontSize: title['font-size']}">{{ item.title }}</div>
             </a>
           </div>
           <div class="cm-product-price" v-if="item.variants[0].compare_at_price === null">
-            <div class="cm-price" :style="{color: price.color, fontSize: price.fontSize}">{{ item.variants[0].price}}</div>
+            <div class="cm-price" :style="{color: price.color, fontSize: price['font-size']}">{{ item.variants[0].price}}</div>
           </div>
 
           <div class="cm-product-price price-with-sale" v-if="item.variants[0].compare_at_price">
-            <div class="cm-price" :style="{color: price.color, fontSize: price.fontSize}">{{ item.variants[0].price}}</div>
-            <div class="compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: sale.color, fontSize: sale.fontSize, textDecoration: sale.textDecoration}">{{ item.variants[0].compare_at_price }}</div>
+            <div class="cm-price" :style="{color: price.color, fontSize: price['font-size']}">{{ item.variants[0].price}}</div>
+            <div class="compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: sale.color, fontSize: sale['font-size'], textDecoration: sale.textDecoration}">{{ item.variants[0].compare_at_price }}</div>
           </div>
 
           <div class="cm-links">
-            <a class="cm-cart-link" :style="{backgroundColor: addToCart.background, fontSize: addToCart.fontSize, color: addToCart.color}">Add To Cart</a>
-            <a class="cm-view-link" :style="{backgroundColor: viewProduct.background, fontSize: viewProduct.fontSize, color: viewProduct.color}">View Product</a>
+            <a class="cm-cart-link" :style="{backgroundColor: addToCart.background, fontSize: addToCart['font-size'], color: addToCart.color}">Add To Cart</a>
+            <a class="cm-view-link" :style="{backgroundColor: viewProduct.background, fontSize: viewProduct['font-size'], color: viewProduct.color}">View Product</a>
           </div>
         </div>
       </div>
