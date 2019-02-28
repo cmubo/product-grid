@@ -1,7 +1,7 @@
 {
-  "name": "product-grid",
+  "name": "Product Grid Customiser",
   "version": "1.0.0",
-  "description": "My hunky-dory Nuxt.js project",
+  "description": "Customiser for a product grid.",
   "author": "Callum Mubery",
   "private": true,
   "scripts": {

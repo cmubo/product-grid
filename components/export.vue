@@ -223,7 +223,7 @@ export default {
               attributes: {
                 "display": "block",
                 "width": "50%",
-                "background": "red",
+                "background": "#000000",
                 "color": "#ffffff",
                 "padding": "5px",
                 "text-align": "center",
@@ -236,7 +236,7 @@ export default {
             "> a.cm-cart-link": {
               selector: "> a.cm-cart-link",
               attributes: {
-                "background": "blue",
+                "background": "#2e2e2e",
                 "color": "#fff",
                 "font-size": "14px"
               }
