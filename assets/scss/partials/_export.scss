@@ -1,0 +1,41 @@
+.export-outer{
+  position: fixed;
+  background: rgba(0,0,0,0.9);
+  box-shadow: 0 0 3px black;
+  top: 0;
+  right: 0;
+  //height: 100%;
+  //width: 100%;
+
+  .export-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+    .export-inner{
+      max-width: 800px;
+      width: 100%;
+      background: #000;
+      padding: 20px;
+      color: #fff;
+
+      .export-code-container{
+        width: 100%;
+        background: $darkGrey;
+
+        .top-bar{
+          padding: 10px 20px;
+          * {
+            user-select: none;
+          }
+        }
+        code {
+          display: block;
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
