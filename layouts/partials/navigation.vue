@@ -18,7 +18,10 @@
         <span class="active-bar"></span>
       </ul>
     </nav>
-    <div class="help-button">
+    <div class="right-button export-button">
+      <a href="#" v-on:click.prevent="openExport($event)">Export</a>
+    </div>
+    <div class="right-button help-button">
       <a href="#">Help</a>
     </div>
   </div>
@@ -46,6 +49,17 @@ export default {
         }
 
         activeBar.style.transform = `translateX(${this.currentNavItem}px)`;
+      }
+    },
+    openExport(event) {
+      if (document.querySelector(".export-outer")){
+        let exportOuter = document.querySelector(".export-outer");
+        window.dispatchEvent(new CustomEvent('toggle-export'));
+        if (exportOuter.classList.contains("export-outer--active")){
+            exportOuter.classList.remove("export-outer--active");
+        } else {
+          exportOuter.classList.add("export-outer--active");
+        }
       }
     }
   },
