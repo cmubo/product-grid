@@ -1,30 +1,73 @@
 <template>
 <div class="export-container">
   <div class="export-inner">
-    <div class="export-code-container">
-      <div class="top-bar"><span>CSS</span><span v-on:click="generateCSS()"> Refresh Styles</span></div>
-      <code class="css" v-if="styleType == 'css'">
-        <div v-for="block in css" class="style-block">
-          <div class="selector">{{block.selector}} {</div>
-          <div class="style" v-for="(style, styleName) in block.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{styleName}}: {{style}};</div>
-          <div class="closing-bracket">}</div>
-          <br>
-          <!-- TODO: These will need to be replaced with a recursive component in the future so it can traverse through multiple children-->
-          <div v-if="block.pseudo" v-for="pseudoBlock in block.pseudo">
-            <div class="selector">{{block.selector}}{{pseudoBlock.selector}} {</div>
-            <div class="style" v-for="(pseudoStyle, pseudoStyleName) in pseudoBlock.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{pseudoStyleName}}: {{pseudoStyle}};</div>
-            <div class="closing-bracket">}</div>
-            <br>
-          </div>
+    <div class="export-information">
+      <h4>Export</h4>
+      <p>
+        Replace any comments in the html with the appropriate code to generate specific elements.
+        A container should be placed around the cm-product-cell to control the width of the element.
+      </p>
+    </div>
 
-          <div v-if="block.children" v-for="childBlock in block.children">
-            <div class="selector">{{block.selector}} {{childBlock.selector}} {</div>
-            <div class="style" v-for="(childStyle, childStyleName) in childBlock.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{childStyleName}}: {{childStyle}};</div>
+    <div class="export-code-container">
+      <div class="top-bar"><span>HTML</span></div>
+        <code class="html">
+&#x3C;div class=&#x22;cm-product-cell&#x22;&#x3E;
+  &#x3C;div class=&#x22;cm-product-inner&#x22;&#x3E;
+    &#x3C;div class=&#x22;cm-product-img&#x22; style=&#x22;background-image: url(&#x3C;!-- Product image here --&#x3E;);&#x22;&#x3E;
+      &#x3C;a href=&#x22;&#x3C;!-- PRODUCT LINK HERE --&#x3E;&#x22;&#x3E;
+        &#x3C;img src=&#x22;&#x3C;!-- PRODUCT IMAGE HERE --&#x3E;&#x22;&#x3E;
+        &#x3C;/a&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;cm-product-title&#x22;&#x3E;
+      &#x3C;a href=&#x22;&#x3C;!-- PRODUCT LINK HERE --&#x3E;&#x22;&#x3E;
+        &#x3C;div class=&#x22;cm-title&#x22;&#x3E;&#x3C;!-- PRODUCT TITLE HERE --&#x3E;&#x3C;/div&#x3E;
+      &#x3C;/a&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- IF THERE IS NO SALE PRICE --&#x3E;
+    &#x3C;div class=&#x22;cm-product-price&#x22;&#x3E;
+      &#x3C;div class=&#x22;cm-price&#x22;&#x3E;&#x3C;!-- PRODUCT PRICE HERE --&#x3E; &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+
+    &#x3C;!-- IF THERE IS A SALE PRICE --&#x3E;
+    &#x3C;div class=&#x22;cm-product-price price-with-sale&#x22;&#x3E;
+      &#x3C;div class=&#x22;cm-price&#x22;&#x3E;&#x3C;!-- PRODUCT PRICE HERE --&#x3E; &#x3C;/div&#x3E;
+      &#x3C;div class=&#x22;compare-at-price&#x22;&#x3E;&#x3C;!-- COMPARE PRICE HERE --&#x3E; &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+
+    &#x3C;div class=&#x22;cm-links&#x22;&#x3E;
+      &#x3C;a href=&#x22;#&#x22; class=&#x22;cm-cart-link&#x22;&#x3E;Add To Cart&#x3C;/a&#x3E;&#x3C;!-- Add an event listener to this a --&#x3E;
+      &#x3C;a href=&#x22;&#x3C;!-- PRODUCT LINK HERE --&#x3E;&#x22; class=&#x22;cm-view-link&#x22;&#x3E;View Product&#x3C;/a&#x3E;
+    &#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+        </code>
+    </div>
+
+    <div class="export-code-container">
+      <div class="top-bar"><span>CSS</span></div>
+        <code class="css" v-if="styleType == 'css'">
+          <div v-for="block in css" class="style-block">
+            <div class="selector">{{block.selector}} {</div>
+            <div class="style" v-for="(style, styleName) in block.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{styleName}}: {{style}};</div>
             <div class="closing-bracket">}</div>
             <br>
+            <!-- TODO: These will need to be replaced with a recursive component in the future so it can traverse through multiple children-->
+            <div v-if="block.pseudo" v-for="pseudoBlock in block.pseudo">
+              <div class="selector">{{block.selector}}{{pseudoBlock.selector}} {</div>
+              <div class="style" v-for="(pseudoStyle, pseudoStyleName) in pseudoBlock.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{pseudoStyleName}}: {{pseudoStyle}};</div>
+              <div class="closing-bracket">}</div>
+              <br>
+            </div>
+
+            <div v-if="block.children" v-for="childBlock in block.children">
+              <div class="selector">{{block.selector}} {{childBlock.selector}} {</div>
+              <div class="style" v-for="(childStyle, childStyleName) in childBlock.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{childStyleName}}: {{childStyle}};</div>
+              <div class="closing-bracket">}</div>
+              <br>
+            </div>
           </div>
-        </div>
-      </code>
+        </code>
     </div>
   </div>
 </div>

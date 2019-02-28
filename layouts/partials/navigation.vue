@@ -18,8 +18,11 @@
         <span class="active-bar"></span>
       </ul>
     </nav>
-    <div class="help-button">
-      <a href="#" v-on:click.prevent="openExport($event)">Help</a>
+    <div class="right-button export-button">
+      <a href="#" v-on:click.prevent="openExport($event)">Export</a>
+    </div>
+    <div class="right-button help-button">
+      <a href="#">Help</a>
     </div>
   </div>
 </header>
