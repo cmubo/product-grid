@@ -22,7 +22,7 @@
     </div>
     <div class="config-item">
       <label>Color</label>
-      <input data-c-object="product.color" placeholder="#ffffff"></input>
+      <input data-c-object="product.color" placeholder="#000000"></input>
       <Colorpicker />
     </div>
     <div class="config-item">
@@ -46,7 +46,7 @@
     <h3>Title</h3>
     <div class="config-item">
       <label>Color</label>
-      <input data-c-object="title.color" placeholder="#ffffff"></input>
+      <input data-c-object="title.color" placeholder="#000000"></input>
       <Colorpicker />
     </div>
     <div class="config-item">
@@ -57,7 +57,7 @@
     <h3>Price</h3>
     <div class="config-item">
       <label>Color</label>
-      <input data-c-object="price.color" placeholder="#ffffff"></input>
+      <input data-c-object="price.color" placeholder="#000000"></input>
       <Colorpicker />
     </div>
     <div class="config-item">
@@ -68,7 +68,7 @@
     <h3>Sale Price</h3>
     <div class="config-item">
       <label>Color</label>
-      <input data-c-object="sale.color" placeholder="#ffffff"></input>
+      <input data-c-object="sale.color" placeholder="#000000"></input>
       <Colorpicker />
     </div>
     <div class="config-item">
@@ -80,21 +80,10 @@
       <input data-c-object="sale.text-decoration" placeholder="none"></input>
     </div>
 
-    <h3>Sale Emblem</h3>
-    <div class="config-item">
-      <label>Color</label>
-      <input data-c-object="sale.color" placeholder="#ffffff"></input>
-      <Colorpicker />
-    </div>
-    <div class="config-item">
-      <label>Font Size</label>
-      <input data-c-object="sale.font-size" placeholder="0.875rem"></input>
-    </div>
-
     <h3>Add To Cart</h3>
     <div class="config-item">
       <label>Background</label>
-      <input data-c-object="addToCart.background" placeholder="#ffffff"></input>
+      <input data-c-object="addToCart.background" placeholder="#000000"></input>
       <Colorpicker />
     </div>
     <div class="config-item">
@@ -110,7 +99,7 @@
     <h3>View Product</h3>
     <div class="config-item">
       <label>Background</label>
-      <input data-c-object="viewProduct.background" placeholder="#ffffff"></input>
+      <input data-c-object="viewProduct.background" placeholder="#2e2e2e"></input>
       <Colorpicker />
     </div>
     <div class="config-item">

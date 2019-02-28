@@ -12,12 +12,12 @@
         <li>
           <nuxt-link to="/styles/style1">Style 1</nuxt-link>
         </li>
-        <li>
-          <nuxt-link to="/styles/style2">Style 2</nuxt-link>
-        </li>
         <span class="active-bar"></span>
       </ul>
     </nav>
+    <div class="right-button export-button">
+      <a href="https://trello.com/b/UWTOxENW/product-grid" target="_blank">To-Do</a>
+    </div>
     <div class="right-button export-button">
       <a href="#" v-on:click.prevent="openExport($event)">Export</a>
     </div>

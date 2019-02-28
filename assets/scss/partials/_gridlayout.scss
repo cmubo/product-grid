@@ -95,7 +95,7 @@
           transition: 0.3s;
 
           > a {
-            background: red;
+            background: $black;
             color: $white;
             font-size: $linkFontSize;
             font-weight: bold;
@@ -107,7 +107,7 @@
             text-align: center;
 
             &.cm-cart-link {
-              background: blue;
+              background: #2e2e2e;
             }
           }
         }
