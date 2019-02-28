@@ -222,6 +222,7 @@ export default {
 
       let productProperties = Object.entries(this.product);
       for (let [property, style] of productProperties) {
+        // TODO: Need to configure this so padding works too.
         if (style !== null) this.css[".cm-product-inner"].attributes[property] = style;
       }
 
