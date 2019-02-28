@@ -48,7 +48,7 @@
 
           <div class="cm-product-price price-with-sale" v-if="item.variants[0].compare_at_price">
             <div class="cm-price" :style="{color: price.color, fontSize: price['font-size']}">{{ item.variants[0].price}}</div>
-            <div class="compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: sale.color, fontSize: sale['font-size'], textDecoration: sale.textDecoration}">{{ item.variants[0].compare_at_price }}</div>
+            <div class="cm-compare-at-price" v-if="item.variants[0].compare_at_price" :style="{color: sale.color, fontSize: sale['font-size'], textDecoration: sale.textDecoration}">{{ item.variants[0].compare_at_price }}</div>
           </div>
 
           <div class="cm-links">

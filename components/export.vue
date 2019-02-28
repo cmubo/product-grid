@@ -127,6 +127,13 @@ export default {
                 "color": "inherit",
                 "text-decoration": "none",
               }
+            },
+            "a .cm-title": {
+              selector: "a .cm-title",
+              attributes: {
+                "color": "#000000",
+                "font-size": "0.875rem"
+              }
             }
           }
         },
@@ -136,6 +143,23 @@ export default {
             "flex-grow": "1",
             "text-align": "center", // TODO: Add these (font-weight too) as reactive attributes
             "font-weight": "bold",
+          },
+          children: {
+            ".cm-price": {
+              selector: ".cm-price",
+              attributes: {
+                "color": "#000000",
+                "font-size": "0.875rem"
+              }
+            },
+            ".cm-compare-at-price": {
+              selector: ".cm-compare-at-price",
+              attributes: {
+                "color": "#000000",
+                "font-size": "0.875rem",
+                "text-decoration": "none"
+              }
+            }
           }
         },
         ".cm-links": {
@@ -194,9 +218,39 @@ export default {
   },
   methods: {
     generateCSS(){
+      // TODO: If a value is added then removed, the attribute will show an empty value, default value needs to be there.
+
       let productProperties = Object.entries(this.product);
-      for (let [property, style] of productProperties){
-        if (style !== null) this.css[".cm-product-inner"].properties[property] = style;
+      for (let [property, style] of productProperties) {
+        if (style !== null) this.css[".cm-product-inner"].attributes[property] = style;
+      }
+
+      let titleProperties = Object.entries(this.title);
+      for (let [property, style] of titleProperties){
+        if (style !== null) this.css[".cm-product-title"].children["a .cm-title"].attributes[property] = style;
+      }
+
+      let priceProperties = Object.entries(this.price);
+      for (let [property, style] of priceProperties){
+        if (style !== null) this.css[".cm-product-price"].children[".cm-price"].attributes[property] = style;
+      }
+
+      let salePriceProperties = Object.entries(this.sale);
+      for (let [property, style] of salePriceProperties){
+        if (style !== null) this.css[".cm-product-price"].children[".cm-compare-at-price"].attributes[property] = style;
+      }
+
+      //TODO: Sale Emblem
+      //TODO: image
+
+      let addCartProperties = Object.entries(this.addToCart);
+      for (let [property, style] of addCartProperties){
+        if (style !== null) this.css[".cm-links"].children["> a"].attributes[property] = style;
+      }
+
+      let viewProductProperties = Object.entries(this.viewProduct);
+      for (let [property, style] of viewProductProperties){
+        if (style !== null) this.css[".cm-links"].children["> a.cm-cart-link"].attributes[property] = style;
       }
 
       // Place the specific style properties here.
