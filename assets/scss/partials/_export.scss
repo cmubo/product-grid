@@ -24,6 +24,8 @@
       .export-code-container{
         width: 100%;
         background: $darkGrey;
+        height: 600px;
+        overflow: scroll;
 
         .top-bar{
           padding: 10px 20px;

@@ -6,13 +6,20 @@
       <code class="css" v-if="styleType == 'css'">
         <div v-for="block in css" class="style-block">
           <div class="selector">{{block.selector}} {</div>
-          <div class="style" v-for="(style, styleName) in block.properties"><span v-if="whitespace" v-html="whitespace"></span>{{styleName}}: {{style}};</div>
+          <div class="style" v-for="(style, styleName) in block.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{styleName}}: {{style}};</div>
           <div class="closing-bracket">}</div>
           <br>
-
+          <!-- TODO: These will need to be replaced with a recurive component in the future so it can traverse through multiple children-->
           <div v-if="block.pseudo" v-for="pseudoBlock in block.pseudo">
             <div class="selector">{{block.selector}}{{pseudoBlock.selector}} {</div>
-            <div class="style" v-for="(pseudoStyle, pseudoStyleName) in pseudoBlock.properties"><span v-if="whitespace" v-html="whitespace"></span>{{pseudoStyleName}}: {{pseudoStyle}};</div>
+            <div class="style" v-for="(pseudoStyle, pseudoStyleName) in pseudoBlock.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{pseudoStyleName}}: {{pseudoStyle}};</div>
+            <div class="closing-bracket">}</div>
+            <br>
+          </div>
+
+          <div v-if="block.children" v-for="childBlock in block.children">
+            <div class="selector">{{block.selector}} {{childBlock.selector}} {</div>
+            <div class="style" v-for="(childStyle, childStyleName) in childBlock.attributes"><span v-if="whitespace" v-html="whitespace"></span>{{childStyleName}}: {{childStyle}};</div>
             <div class="closing-bracket">}</div>
             <br>
           </div>
@@ -30,30 +37,36 @@ export default {
   data: function() {
     return {
       export: "",
-      // css: {
-      //   product: [],
-      //   title: [],
-      //   price: [],
-      //   sale: [],
-      //   saleEmblem: [],
-      //   image: [],
-      //   addToCart: [],
-      //   viewProduct: []
-      // },
       currentStyle: "style1",
       styleType: "css",
       whitespace: "&nbsp; &nbsp;",
+      // TODO: Attributes needs to be of type array ideally so that we can push and remove attributes.
       css: {
         ".cm-product-cell": {
           selector: ".cm-product-cell",
-          properties: {
+          attributes: {
             "display": "flex",
-            "padding": "15px",
+            "padding": "15px"
+          },
+          pseudo: {
+            ":hover .cm-product-inner": {
+              selector: ":hover .cm-product-inner",
+              attributes: {
+                "box-shadow": "0 0 15px rgba(0,0,0,0.2)",
+              }
+            },
+            ":hover .cm-product-inner .cm-links": {
+              selector: ":hover .cm-product-inner .cm-links",
+              attributes: {
+                "visibility": "visible",
+                "opacity": "1",
+              }
+            }
           }
         },
         ".cm-product-inner": {
           selector: ".cm-product-inner",
-          properties: {
+          attributes: {
             "position": "relative",
             "display": "flex",
             "flex-direction": "column",
@@ -65,14 +78,98 @@ export default {
             "background": "#ffffff",
             "color": "#000000",
             "font-size": "0.875rem",
-            "family": "Montserrat",
-            // "transition": ".3s", TODO: Need to push this on style 1 only
+            "font-family": "Montserrat",
+            "transition": ".3s", // TODO: Need to push this on style 1 only.
+          }
+        },
+        ".cm-product-img": { // TODO: This will need to be changed when more styles are added.
+          selector: ".cm-product-img",
+          attributes: {
+            "position": "relative",
+            "width": "100%",
+            "padding": "50%",
+            "height": "0",
+            "background-size": "contain",
+            "background-position": "center center",
+            "background-repeat": "no-repeat",
           },
-          pseudo: {
-            ":hover": {
-              selector: ":hover",
-              properties: {
-                "color": "red",
+          children: {
+            "> a": {
+              selector: "> a",
+              attributes: {
+                "position": "asolute",
+                "width": "100%",
+                "height": "100%",
+                "top": "0",
+                "left": "0",
+              }
+            },
+            "img": {
+              selector: "img",
+              attributes: {
+                "width": "0",
+                "height": "0",
+              }
+            }
+          }
+        },
+        ".cm-product-title": {
+          selector: ".cm-product-title",
+          attributes: {
+            "text-align": "center",
+            "padding-top": "15px",
+            "padding-bottom": "15px",
+          },
+          children: {
+            "a": {
+              selector: "a",
+              attributes: {
+                "color": "inherit",
+                "text-decoration": "none",
+              }
+            }
+          }
+        },
+        ".cm-product-price": {
+          selector: ".cm-product-price",
+          attributes: {
+            "flex-grow": "1",
+            "text-align": "center", // TODO: Add these (font-weight too) as reactive attributes
+            "font-weight": "bold",
+          }
+        },
+        ".cm-links": {
+          selector: ".cm-links",
+          attributes: {
+            "display": "flex",
+            "position": "absolute",
+            "width": "100%",
+            "bottom": "0",
+            "left": "0",
+            "opacity": "0",
+            "visibility": "hidden",
+            "transition": "0.3s",
+          },
+          children: {
+            "> a": {
+              selector: "> a",
+              attributes: {
+                "display": "block",
+                "width": "50%",
+                "background": "red",
+                "color": "#ffffff",
+                "padding": "5px",
+                "text-align": "center",
+                "font-size": "0.875rem",
+                "font-weight": "bold",
+                "text-decoration": "none",
+                "line-height": "25px",
+              }
+            },
+            "> a.cm-cart-link": {
+              selector: "> a.cm-cart-link",
+              attributes: {
+                "background": "blue"
               }
             }
           }
@@ -100,9 +197,6 @@ export default {
       let productProperties = Object.entries(this.product);
       for (let [property, style] of productProperties){
         if (style !== null) this.css[".cm-product-inner"].properties[property] = style;
-
-        console.log(property);
-        console.log(style);
       }
 
       // Place the specific style properties here.
