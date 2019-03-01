@@ -22,15 +22,6 @@ module.exports = {
     port: 3232, // default: 3000
   },
 
-
-  /*
-  ** Custom Shopify api
-   */
-  serverMiddleware: [
-     "~/api/shopify.js",
-     // {path: '/productsapi', handler: '~/api/products.js'}
-  ],
-
   /*
   ** Customize the progress-bar color
   */

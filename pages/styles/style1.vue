@@ -66,6 +66,7 @@
 import axios from 'axios';
 import Customiser from '~/components/customiser.vue';
 import { mapState } from 'vuex';
+const json = require('~/static/products.json');
 
 export default {
   components: {
@@ -73,10 +74,6 @@ export default {
   },
   data: function() {
     return {
-      shopifyProductResponse: null,
-      AllProductsJson: null,
-      productsList: null,
-      productsShown: false,
       columnSelector: {
           columnCount: "five-col",
           HRCount: "Five Columns"
@@ -85,6 +82,7 @@ export default {
   },
   computed: {
     ...mapState({
+      productsList: state => state.products.products,
       product: state => state.customiser.cOptions.product,
       image: state => state.customiser.cOptions.image,
       title: state => state.customiser.cOptions.title,
@@ -95,26 +93,13 @@ export default {
     })
   },
   mounted: function() {
-    let self = this;
-    this.getAllProducts();
-
     document.addEventListener('click', function(){
       document.querySelector('.col-count-selector').classList.remove("active");
     });
   },
   methods: {
-    //TODO: Move these products into the vue store so that product images can be changed
-    getAllProducts() {
-      let self = this
-      axios.get('/shopify/products')
-        .then(function(response) {
-          self.shopifyProductResponse = response.data.body;
-          self.productsList = JSON.parse(response.data.body).products;
-          self.productsShown = true;
-        })
-        .catch(function(error) {
-          console.error(error);
-        });
+    getProducts() {
+      this.$store.commit('setProducts', json);
     },
 
     selectColumnCount(columns, hrcolumns, e) {
@@ -127,8 +112,7 @@ export default {
       e.stopPropagation();
       let selector = document.querySelector(".col-count-selector");
       selector.classList.contains("active") ? selector.classList.remove("active") : selector.classList.add("active");
-    },
-
+    }
   }
 }
 </script>
